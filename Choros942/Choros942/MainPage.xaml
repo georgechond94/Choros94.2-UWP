@@ -1,0 +1,284 @@
+﻿<Page
+    x:Class="Choros942.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Choros942"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media3D="using:Windows.UI.Xaml.Media.Media3D"
+    mc:Ignorable="d"
+    xmlns:Converters="using:Choros942.Converters">
+    <Page.Resources>
+        <Converters:IntToDoubleConverter x:Key="DoubleConverter"></Converters:IntToDoubleConverter>
+        <Style x:Key="ToggleButtonStyle1" TargetType="ToggleButton">
+            <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundTransparentBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ToggleButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="8,4,8,4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF0078D7"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="pgrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Glyph" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE768;"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="10,0,0,0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltChromeWhiteBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedPointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF0078D7"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Glyph" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE768;"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="10,0,0,0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedPressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Glyph" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="&#xE768;"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="10,0,0,0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="CheckedDisabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="pgrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="IndeterminatePointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="pgrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="IndeterminatePressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="pgrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="IndeterminateDisabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="picon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="pgrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="pgrid">
+                                <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" StrokeThickness="2" Stroke="White" Width="100" Height="100" Fill="#05000000"></Ellipse>
+                                <FontIcon x:Name="picon" HorizontalAlignment="Center" FontSize="40" Margin="0,0,0,0" Foreground="White" VerticalAlignment="Center" Glyph="&#xE769;"></FontIcon>
+                            </Grid>
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+<!--
+        <MediaElement Name="mElem" CurrentStateChanged="MElem_OnCurrentStateChanged" Visibility="Collapsed" AudioCategory="BackgroundCapableMedia" AutoPlay="True" Source="http://195.251.162.97:8000/stream.ogg"/>
+-->
+        <Grid x:Name="RootGrid" HorizontalAlignment="Stretch" Margin="0,0,0,12" SizeChanged="RootGrid_SizeChanged">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer HorizontalAlignment="Stretch" Grid.Row="0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Hidden"
+                          x:Name="ParallaxRoot">
+                <ScrollViewer.Transform3D>
+                    <media3D:PerspectiveTransform3D x:Name="PerspectiveTransform" />
+                </ScrollViewer.Transform3D>
+
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="RainierBackgroundImage" Source="Assets/wallpaper.jpg" Stretch="UniformToFill"
+                           VerticalAlignment="Top" HorizontalAlignment="Left" Height="400" >
+                        <!-- The image is translated back in 3D Z-offset to create the parallax effect. -->
+                        <!-- Since the image is "behind" the content in 3D space, it appears to move slower. -->
+                        <Image.Transform3D>
+                            <!-- See Scenario1.NormalizeParallax. Lower TranslateZ = more parallax. -->
+                            <media3D:CompositeTransform3D TranslateZ="-500" />
+                        </Image.Transform3D>
+                    </Image>
+
+                    <RelativePanel Grid.Row="0" Name="userinfo" HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
+                        <Border Background="#93000000" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></Border>
+                        <ToggleButton Name="userimage" Click="Userimage_OnClick" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Style="{StaticResource ToggleButtonStyle1}" Background="{x:Null}"/>
+                        <Slider x:Name="volumeslider" RelativePanel.AlignBottomWithPanel="True" Minimum="0" Maximum="100" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="200" />
+                        <Image x:Name="username" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True"  RelativePanel.Above="userimage" MinWidth="159" MaxWidth="150"  Source="Assets/untitled.png"/>
+                        <TextBlock Name="nowplaying" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="White" Text="{Binding NowPlaying.Name}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="userimage"></TextBlock>
+                        <TextBlock Name="nowplayingh" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="#FF384FA1" Text="{Binding NowPlaying.Time}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="nowplaying"></TextBlock>
+                    </RelativePanel>
+
+                    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                          Padding="15,10" Grid.Row="1" VerticalAlignment="Stretch">
+                        <Pivot x:Name="flipView1" SelectedIndex="{Binding SelectedDay,Mode=TwoWay}" ScrollViewer.HorizontalScrollMode="Disabled" Height="450" ItemsSource="{Binding Days}">
+                            <Pivot.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"></TextBlock>
+                                </DataTemplate>
+                            </Pivot.HeaderTemplate>
+                            <Pivot.ItemTemplate>
+                                <DataTemplate >
+
+                                    <ListView ItemsSource="{Binding Producers}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <RelativePanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <TextBlock RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="Name" Style="{StaticResource SubtitleTextBlockStyle}" RelativePanel.AlignLeftWithPanel="True" Text="{Binding Name}"></TextBlock>
+                                                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}" RelativePanel.AlignVerticalCenterWith="Name"  RelativePanel.AlignRightWithPanel="True" Text="{Binding Time}"></TextBlock>
+
+                                                    <Border Height="0.5" BorderThickness="1"  BorderBrush="#FFB6B6B6" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></Border>
+                                                </RelativePanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListViewItem">
+                                                            <ListViewItemPresenter ContentMargin="0" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"></ListViewItemPresenter>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+
+                                </DataTemplate>
+                            </Pivot.ItemTemplate>
+                        </Pivot>
+                    </Grid>
+                </Grid>
+
+            </ScrollViewer>
+
+        </Grid>
+
+    </Grid>
+    <Page.BottomAppBar>
+        <AppBar IsSticky="False">
+            <AppBar.Content>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <AppBarButton Click="Help_OnClick" Label="About" Icon="Help"/>
+                        <AppBarButton Click="Feedback_OnClick" Label="Feedback" Icon="Emoji2"/>
+                        <AppBarButton Click="Rate_OnClick" Label="Rate" Icon="SolidStar"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,20" HorizontalAlignment="Left" Orientation="Vertical">
+                        <TextBlock Margin="10,0" Text="Useful Links" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Tapped="UIElement_OnTapped0" Margin="10,0" Width="40" Height="40" Source="Assets/Square71x71Logo.scale-200.png"></Image>
+                            <Image Tapped="UIElement_OnTapped" Margin="10,0" Width="40" Height="40" Source="Assets/facebook.png"></Image>
+                            <Image Tapped="UIElement_OnTapped1" Margin="10,0" Width="40" Height="40" Source="Assets/twitter.png"></Image>
+                            <Image Tapped="UIElement_OnTapped2" Margin="10,0" Width="40" Height="40" Source="Assets/youtube.png"></Image>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </AppBar.Content>
+        </AppBar>
+    </Page.BottomAppBar>
+</Page>

@@ -1,0 +1,25 @@
+﻿<ContentDialog
+    x:Class="Choros942.AboutDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Choros942"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="About"
+    PrimaryButtonText=""
+    IsPrimaryButtonEnabled="False"
+    SecondaryButtonText="Close"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid Margin="0,10,0,0">
+        <StackPanel>
+            <TextBlock Text="Χώρος 94.2"></TextBlock>
+            <TextBlock x:Name="versiontb" Text="Version "></TextBlock>
+            <TextBlock Text="Copyright © 2016."></TextBlock>
+            <TextBlock Text="All rights reserved."></TextBlock>
+            <TextBlock Text=""></TextBlock>
+        </StackPanel>
+    </Grid>
+</ContentDialog>
